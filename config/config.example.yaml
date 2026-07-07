@@ -1,0 +1,45 @@
+app:
+  name: "Xinkong Home"
+  mode: "public-demo"
+  log_level: "INFO"
+
+interaction:
+  wake_gate_enabled: true
+  wake_names:
+    - "芯控家居"
+    - "芯控"
+  conversation_window_seconds: 8
+
+speech:
+  asr_provider: "placeholder-realtime-asr"
+  tts_provider: "placeholder-local-tts"
+  local_tts_model_path: "models/<local-tts-model>.onnx"
+
+smart_home:
+  provider: "home-assistant"
+  api_url: "http://localhost:8123"
+  api_token_env: "HA_API_TOKEN"
+  mqtt_host: "localhost"
+  mqtt_port: 1883
+
+edge_gateway:
+  provider: "openclaw"
+  gateway_url: "ws://localhost:18789"
+  token_env: "OPENCLAW_TOKEN"
+
+vision:
+  camera_backend: "rdk-camera-service"
+  bpu_backend: "rdk-x5-bpu-placeholder"
+  detect_model_path: "models/bpu/<person-detect-model>.bin"
+  pose_model_path: "models/bpu/<pose-model>.bin"
+
+health:
+  sensors:
+    - "heart_rate"
+    - "spo2"
+    - "grip_force"
+
+weather:
+  provider: "public-api-placeholder"
+  location_mode: "auto"
+
