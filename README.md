@@ -1,5 +1,7 @@
 # Xinkong Home Public Framework
 
+[中文说明](README_cn.md)
+
 `Xinkong Home` is an edge AIoT home-control framework built around an RDK X5 device. This public repository is a competition-facing framework snapshot: it shows the main architecture, module boundaries, and extension points without publishing private deployment details or the complete competition implementation.
 
 Chinese name: `芯控家居`
