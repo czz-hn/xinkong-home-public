@@ -16,6 +16,34 @@ main.py
   -> speech reply
 ```
 
+## System Architecture
+
+```mermaid
+flowchart TD
+    User["User voice or text"] --> Main["main.py public entry point"]
+    Main --> App["XinkongHomeApp"]
+    App --> Wake["Wake gate and session guard"]
+    Wake --> NLU["IntentRouter"]
+    NLU --> Safety["SafetyPolicy"]
+    Safety --> Orchestrator["TaskOrchestrator"]
+
+    Orchestrator --> HA["SmartHomeGateway<br/>Home Assistant / MQTT boundary"]
+    Orchestrator --> Edge["EdgeGateway<br/>OpenClaw / local action boundary"]
+    Orchestrator --> Vision["VisionGateway<br/>RDK X5 camera + BPU boundary"]
+    Orchestrator --> Health["HealthGateway<br/>health sensor boundary"]
+    Orchestrator --> Weather["WeatherGateway<br/>weather query boundary"]
+    Orchestrator --> Monitor["HealthMonitor<br/>runtime status boundary"]
+
+    HA --> Outcome["ExecutionOutcome"]
+    Edge --> Outcome
+    Vision --> Outcome
+    Health --> Outcome
+    Weather --> Outcome
+    Monitor --> Outcome
+    Outcome --> TTS["SpeechSynthesizer"]
+    TTS --> User
+```
+
 ## Runtime Responsibilities
 
 - `config.py`: loads redacted public configuration.
@@ -43,3 +71,7 @@ This repository keeps those as protocols and simulations so the framework is und
 ## RDK X5 Role
 
 RDK X5 is the edge node that coordinates local perception, voice interaction, smart-home control, and runtime health. The private project uses RDK-specific services and model files that are intentionally not published here.
+
+## Feature Matrix
+
+See `docs/system_overview.md` for a concise table of public modules, runtime roles, and private implementation boundaries.

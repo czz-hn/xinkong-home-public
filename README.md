@@ -13,6 +13,15 @@ Chinese name: `芯控家居`
 - Runtime health checks and graceful fallback concepts for edge deployment.
 - A runnable simulation that demonstrates the control flow without real keys, models, or devices.
 
+## Competition Highlights
+
+- **RDK X5 edge hub:** the system is organized around an RDK X5 edge node, with camera/BPU perception, voice interaction, local services, and smart-home control sharing one runtime.
+- **Multi-modal closed loop:** voice commands can trigger device control, local vision inspection, health sensing, weather queries, and runtime status checks through one orchestration layer.
+- **BPU-aware design:** the public skeleton exposes the BPU vision boundary while keeping model files, preprocessing details, and private inference tuning out of the repository.
+- **Safety-first orchestration:** high-risk actions pass through a risk policy boundary before adapter dispatch; private scene-fusion rules are intentionally not published.
+- **Hybrid reliability:** the full project combines online AI services with local fallbacks, startup warmup, watchdog checks, and health snapshots for competition-site stability.
+- **Clear extension points:** adapters keep Home Assistant, OpenClaw, ESP32/MQTT, health sensors, weather, TTS, and vision modules replaceable.
+
 ## What Is Intentionally Not Published
 
 The full competition project contains hardware parameters, production configuration, model files, private recovery logic, field-tuned safety policies, and complete orchestration code. Those parts are not included here.
@@ -60,6 +69,7 @@ src/xinkong_home/            Framework modules and interfaces.
 examples/simulated_run.py    Small offline simulation.
 tests/                       Interface-level tests for the public skeleton.
 docs/architecture.md         System architecture overview.
+docs/system_overview.md      Feature matrix and module responsibilities.
 docs/open_source_boundary.md What is public and what remains private.
 ```
 

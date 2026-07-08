@@ -18,6 +18,7 @@ Use this directory as an independent GitHub repository:
 - `examples/simulated_run.py`
 - `tests/test_public_skeleton.py`
 - `docs/architecture.md`
+- `docs/system_overview.md`
 - `docs/open_source_boundary.md`
 - `docs/github_publish_checklist.md`
 
