@@ -69,6 +69,7 @@ src/xinkong_home/            Framework modules and interfaces.
 examples/simulated_run.py    Small offline simulation.
 tests/                       Interface-level tests for the public skeleton.
 docs/architecture.md         System architecture overview.
+docs/assets/                 Static architecture image assets.
 docs/system_overview.md      Feature matrix and module responsibilities.
 docs/open_source_boundary.md What is public and what remains private.
 ```

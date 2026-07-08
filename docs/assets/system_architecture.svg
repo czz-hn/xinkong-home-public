@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="760" viewBox="0 0 1180 760" role="img" aria-labelledby="title desc">
+  <title id="title">Xinkong Home public framework architecture</title>
+  <desc id="desc">System architecture diagram showing voice input, application core, safety policy, task orchestration, adapters, execution outcome, and speech reply.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#3b4754"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#101820" flood-opacity="0.14"/>
+    </filter>
+    <style>
+      .bg { fill: #f7f9fc; }
+      .title { font: 700 28px Arial, Helvetica, sans-serif; fill: #152238; }
+      .subtitle { font: 400 14px Arial, Helvetica, sans-serif; fill: #5d6b7a; }
+      .box { stroke-width: 1.5; rx: 10; filter: url(#shadow); }
+      .core { fill: #eaf4ff; stroke: #3c82c4; }
+      .guard { fill: #fff4df; stroke: #d49524; }
+      .adapter { fill: #eef8f1; stroke: #4f9a60; }
+      .io { fill: #f1efff; stroke: #7163c7; }
+      .outcome { fill: #fff0f0; stroke: #cb5c5c; }
+      .label { font: 700 15px Arial, Helvetica, sans-serif; fill: #182433; }
+      .small { font: 400 12px Arial, Helvetica, sans-serif; fill: #526170; }
+      .arrow { fill: none; stroke: #3b4754; stroke-width: 1.8; marker-end: url(#arrow); }
+      .section { font: 700 13px Arial, Helvetica, sans-serif; fill: #496171; letter-spacing: 0.5px; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1180" height="760"/>
+  <text class="title" x="590" y="46" text-anchor="middle">Xinkong Home Public Framework Architecture</text>
+  <text class="subtitle" x="590" y="70" text-anchor="middle">Public view: module boundaries and data flow without private deployment details</text>
+
+  <text class="section" x="70" y="118">INPUT AND APPLICATION CORE</text>
+  <rect class="box io" x="70" y="135" width="170" height="74"/>
+  <text class="label" x="155" y="166" text-anchor="middle">User Voice/Text</text>
+  <text class="small" x="155" y="188" text-anchor="middle">VoiceEvent</text>
+
+  <rect class="box core" x="300" y="135" width="170" height="74"/>
+  <text class="label" x="385" y="166" text-anchor="middle">main.py</text>
+  <text class="small" x="385" y="188" text-anchor="middle">public entry point</text>
+
+  <rect class="box core" x="530" y="135" width="190" height="74"/>
+  <text class="label" x="625" y="166" text-anchor="middle">XinkongHomeApp</text>
+  <text class="small" x="625" y="188" text-anchor="middle">event flow coordinator</text>
+
+  <rect class="box guard" x="780" y="135" width="170" height="74"/>
+  <text class="label" x="865" y="166" text-anchor="middle">Wake Gate</text>
+  <text class="small" x="865" y="188" text-anchor="middle">session guard</text>
+
+  <path class="arrow" d="M240 172 H292"/>
+  <path class="arrow" d="M470 172 H522"/>
+  <path class="arrow" d="M720 172 H772"/>
+
+  <text class="section" x="70" y="274">UNDERSTANDING AND SAFETY</text>
+  <rect class="box core" x="170" y="292" width="180" height="74"/>
+  <text class="label" x="260" y="323" text-anchor="middle">IntentRouter</text>
+  <text class="small" x="260" y="345" text-anchor="middle">text to structured intent</text>
+
+  <rect class="box guard" x="430" y="292" width="180" height="74"/>
+  <text class="label" x="520" y="323" text-anchor="middle">SafetyPolicy</text>
+  <text class="small" x="520" y="345" text-anchor="middle">risk classification</text>
+
+  <rect class="box core" x="690" y="292" width="210" height="74"/>
+  <text class="label" x="795" y="323" text-anchor="middle">TaskOrchestrator</text>
+  <text class="small" x="795" y="345" text-anchor="middle">plan and adapter dispatch</text>
+
+  <path class="arrow" d="M865 209 V248 H260 V284"/>
+  <path class="arrow" d="M350 329 H422"/>
+  <path class="arrow" d="M610 329 H682"/>
+
+  <text class="section" x="70" y="430">ADAPTER BOUNDARIES</text>
+  <rect class="box adapter" x="70" y="450" width="170" height="72"/>
+  <text class="label" x="155" y="478" text-anchor="middle">SmartHome</text>
+  <text class="small" x="155" y="499" text-anchor="middle">Home Assistant / MQTT</text>
+
+  <rect class="box adapter" x="270" y="450" width="170" height="72"/>
+  <text class="label" x="355" y="478" text-anchor="middle">EdgeGateway</text>
+  <text class="small" x="355" y="499" text-anchor="middle">OpenClaw / local action</text>
+
+  <rect class="box adapter" x="470" y="450" width="170" height="72"/>
+  <text class="label" x="555" y="478" text-anchor="middle">VisionGateway</text>
+  <text class="small" x="555" y="499" text-anchor="middle">RDK X5 camera + BPU</text>
+
+  <rect class="box adapter" x="670" y="450" width="170" height="72"/>
+  <text class="label" x="755" y="478" text-anchor="middle">HealthGateway</text>
+  <text class="small" x="755" y="499" text-anchor="middle">health sensors</text>
+
+  <rect class="box adapter" x="870" y="450" width="170" height="72"/>
+  <text class="label" x="955" y="478" text-anchor="middle">WeatherGateway</text>
+  <text class="small" x="955" y="499" text-anchor="middle">auto-location query</text>
+
+  <rect class="box adapter" x="470" y="560" width="170" height="72"/>
+  <text class="label" x="555" y="588" text-anchor="middle">HealthMonitor</text>
+  <text class="small" x="555" y="609" text-anchor="middle">runtime status</text>
+
+  <path class="arrow" d="M795 366 V405 H155 V442"/>
+  <path class="arrow" d="M795 366 V405 H355 V442"/>
+  <path class="arrow" d="M795 366 V405 H555 V442"/>
+  <path class="arrow" d="M795 366 V405 H755 V442"/>
+  <path class="arrow" d="M795 366 V405 H955 V442"/>
+  <path class="arrow" d="M795 366 V405 H555 V552"/>
+
+  <text class="section" x="70" y="680">OUTCOME AND RESPONSE</text>
+  <rect class="box outcome" x="710" y="646" width="180" height="70"/>
+  <text class="label" x="800" y="675" text-anchor="middle">ExecutionOutcome</text>
+  <text class="small" x="800" y="696" text-anchor="middle">result + metadata</text>
+
+  <rect class="box io" x="950" y="646" width="170" height="70"/>
+  <text class="label" x="1035" y="675" text-anchor="middle">SpeechSynthesizer</text>
+  <text class="small" x="1035" y="696" text-anchor="middle">spoken reply</text>
+
+  <path class="arrow" d="M155 522 V681 H702"/>
+  <path class="arrow" d="M355 522 V681 H702"/>
+  <path class="arrow" d="M555 522 V681 H702"/>
+  <path class="arrow" d="M755 522 V681 H702"/>
+  <path class="arrow" d="M955 522 V681 H898"/>
+  <path class="arrow" d="M555 632 V681 H702"/>
+  <path class="arrow" d="M890 681 H942"/>
+  <path class="arrow" d="M1035 646 V112 H155 V127"/>
+</svg>

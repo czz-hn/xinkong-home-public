@@ -18,6 +18,10 @@ main.py
 
 ## System Architecture
 
+![Xinkong Home system architecture](assets/system_architecture.svg)
+
+The static image above is included so the architecture is visible in GitHub and common Markdown preview tools. The Mermaid source below is kept as an editable text version of the same flow.
+
 ```mermaid
 flowchart TD
     User["User voice or text"] --> Main["main.py public entry point"]
